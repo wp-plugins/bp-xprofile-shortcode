@@ -3,7 +3,7 @@
 Plugin Name: BP XProfile Shortcode
 Plugin URI: http://tylerdigital.com/labs/bp-xprofile-shortcode
 Description: Adds Shortcode for BuddyPress XProfile data
-Version: 1.0
+Version: 1.0.1
 Author: Tyler Digital
 Author URI: http://tylerdigital.com/
 */
@@ -43,7 +43,7 @@ function td_bpxps_xprofile_shortcode($attributes) {
 
 	if (!empty($user_id) && intval($user_id)===0) {
 		// shortcode-defined username
-		$user_id = get_user_id_from_string($user_id);
+		$user_id = get_user_by( 'slug', $user_id);
 	}
 	if ((isset($user) && $user=='displayed') ||
 		(empty($user_id) && isset($bp->displayed_user->id))) { 
